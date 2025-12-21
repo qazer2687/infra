@@ -28,7 +28,7 @@
 
 
   # Mount external drive.
-  fileSystems."/mnt/external" = {
+  /*fileSystems."/mnt/external" = {
     device = "/dev/sda1";
     fsType = "exfat";
     options = ["umask=0000" "nofail"];
@@ -50,7 +50,7 @@
       Type = "oneshot";
       ExecStart = "${pkgs.hdparm}/bin/hdparm -S 242 /dev/sda";
     };
-  };
+  };*/
 
   # Support for vscode remote server.
   programs.nix-ld.enable = true;
