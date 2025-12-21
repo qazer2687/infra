@@ -4,6 +4,8 @@
   ];
   networking.hostName = "alpha";
 
+  services.qemuGuest.enable = true;
+
   users = {
     mutableUsers = false;
     users = {
