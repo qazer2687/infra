@@ -4,7 +4,7 @@
   ...
 }:
 inputs.nixpkgs.lib.nixosSystem {
-  system = builtins.currentSystem;
+  system = "aarch64-linux";
   specialArgs = {inherit inputs self;};
   modules = [
     ../../hosts/alpha
