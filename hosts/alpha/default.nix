@@ -25,34 +25,21 @@
 
   boot = {
     # Support for my external HDD.
-    supportedFilesystems = ["exfat"];
+    supportedFilesystems = ["exfat" "nfs"];
   };
 
 
-  # Mount external drive.
-  /*fileSystems."/mnt/external" = {
-    device = "/dev/sda1";
-    fsType = "exfat";
-    options = ["umask=0000" "nofail"];
-    noCheck = true; # This disables fsck.
+  fileSystems."/mnt/storage" = {
+    # IP should match proxmox host IP.
+    device = "192.168.1.94:/mnt/storage";
+    fsType = "nfs";
   };
 
-  # Bind mounts.
   fileSystems."/home/alex/data" = {
-    device = "/mnt/external/data";
+    device = "/mnt/storage/data";
     options = ["bind"];
   };
 
-  # Spin down the external HDD after 60 minutes of inactivity.
-  systemd.services.hdparm = {
-    description = "/dev/sda Spin Down ";
-    wantedBy = ["multi-user.target"];
-    after = ["local-fs.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${pkgs.hdparm}/bin/hdparm -S 242 /dev/sda";
-    };
-  };*/
 
   # Support for vscode remote server.
   programs.nix-ld.enable = true;
