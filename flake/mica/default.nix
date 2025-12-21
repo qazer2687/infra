@@ -6,16 +6,16 @@
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs self;};
   modules = [
-    ../../hosts/mica
+    ../../hosts/alpha
     ../../modules/base/shared
-    ../../modules/base/mica
+    ../../modules/base/alpha
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     inputs.nyx.nixosModules.default
     inputs.flatpak.nixosModules.nix-flatpak
     {
       home-manager = {
-        users.alex = ../../homes/mica;
+        users.alex = ../../homes/alpha;
         extraSpecialArgs = {inherit inputs self;};
         useGlobalPkgs = true;
         useUserPackages = true;

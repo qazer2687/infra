@@ -35,19 +35,8 @@
     overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {
-      # Desktop
-      sage = (import ./flake/sage) {inherit inputs self;};
+      alpha = (import ./flake/alpha) {inherit inputs self;};
 
-      # Laptop
-      jet = (import ./flake/jet) {inherit inputs self;};
-
-
-      # k3s
-
-      # Control Nodes
-      mica = (import ./flake/mica) {inherit inputs self;};
-      # Worker Nodes
-      juniper = (import ./flake/juniper) {inherit inputs self;};
     };
   };
 }

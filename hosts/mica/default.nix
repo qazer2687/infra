@@ -1,9 +1,5 @@
 {pkgs, config, ...}: {
-  imports = [
-    ../../hardware/mica
-  ];
-
-  networking.hostName = "mica";
+  networking.hostName = "alpha";
 
   users = {
     mutableUsers = false;

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-SERVER="mica"
+SERVER="alpha"
 
 if ping -c 1 -W 1 "$SERVER" &> /dev/null; then
-    echo '{"text":"MICA: ONLINE","class":"up"}'
+    echo '{"text":"ALPHA: ONLINE","class":"up"}'
 else
-    echo '{"text":"MICA: OFFLINE","class":"down"}'
+    echo '{"text":"ALPHA: OFFLINE","class":"down"}'
 fi
