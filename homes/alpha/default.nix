@@ -8,7 +8,7 @@
   ];
 
   home.packages = with pkgs; [
-    ncdu
+    gdu
     btop
     cryptsetup
   ];

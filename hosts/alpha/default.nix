@@ -22,20 +22,8 @@
   programs.fish.enable = true;
 
   boot = {
-    kernelParams = [
-      "quiet"
-
-      # Enable Intel GuC/HuC
-      "i915.enable_guc=3"
-
-      # https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy
-      "rcutree.enable_rcu_lazy=1"
-    ];
-    initrd.verbose = false;
-    consoleLogLevel = 0;
     # Support for my external HDD.
     supportedFilesystems = ["exfat"];
-    kernelPackages = pkgs.linuxPackages_cachyos-server;
   };
 
 
