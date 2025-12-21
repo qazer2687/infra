@@ -1,4 +1,7 @@
 {pkgs, config, ...}: {
+  imports = [
+    ../../hardware/alpha
+  ];
   networking.hostName = "alpha";
 
   users = {
