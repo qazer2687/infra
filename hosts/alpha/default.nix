@@ -28,11 +28,17 @@
     supportedFilesystems = ["exfat" "nfs"];
   };
 
-
+  services.rpcbind.enable = true;
   fileSystems."/mnt/storage" = {
     # IP should match proxmox host IP.
     device = "192.168.1.94:/mnt/storage";
     fsType = "nfs";
+    options = [ 
+      "noauto" 
+      "x-systemd.automount" 
+      "x-systemd.idle-timeout=600"
+      "noatime"
+    ];
   };
 
   fileSystems."/home/alex/data" = {
