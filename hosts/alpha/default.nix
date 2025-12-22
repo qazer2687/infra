@@ -43,7 +43,7 @@
 
   fileSystems."/home/alex/data" = {
     device = "/mnt/storage/data";
-    options = ["bind"];
+    options = [ "bind" "x-systemd.automount" ];
   };
 
 
