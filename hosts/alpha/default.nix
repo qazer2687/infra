@@ -31,7 +31,7 @@
   services.rpcbind.enable = true;
   fileSystems."/mnt/storage" = {
     # IP should match proxmox host IP.
-    device = "192.168.1.94:/mnt/storage";
+    device = "192.168.1.10:/mnt/storage";
     fsType = "nfs";
     options = [ 
       "noauto" 
