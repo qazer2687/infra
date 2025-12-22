@@ -18,10 +18,14 @@
           # HTTP
           80
           81
+          # rpcbind (NFS)
+          111
           # HTTPS
           443
           # DNS
           53
+          # NFS
+          2049
           # XMPP
           5222
           5269
@@ -35,6 +39,10 @@
         allowedUDPPorts = [
           # DNS
           53
+          # rpcbind (NFS)
+          111
+          # NFS
+          2049
           # qBittorrent
           6881
           # Netbird
