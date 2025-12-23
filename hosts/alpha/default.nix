@@ -31,27 +31,25 @@
   services.rpcbind.enable = true;
   
   fileSystems."/mnt/storage" = {
-  device = "192.168.1.10:/mnt/storage";
-  fsType = "nfs";
-  options = [ 
-    "noauto" 
-    "x-systemd.automount" 
-    "x-systemd.idle-timeout=600"
-    "noatime"
-  ];
-};
+    device = "192.168.1.10:/mnt/storage";
+    fsType = "nfs";
+    options = [ 
+      "noatime"
+      "soft"
+      "timeo=10"
+      "retrans=2"
+    ];
+  };
 
-fileSystems."/home/alex/data" = {
-  device = "/mnt/storage/data";
-  fsType = "none";
-  options = [ 
-    "bind" 
-    "noauto"
-    "x-systemd.automount"
-    "x-systemd.requires=mnt-storage.mount"
-    "x-systemd.after=mnt-storage.mount"
-  ];
-};
+  fileSystems."/home/alex/data" = {
+    device = "/mnt/storage/data";
+    fsType = "none";
+    options = [ 
+      "bind" 
+      "x-systemd.requires=mnt-storage.mount"
+      "x-systemd.after=mnt-storage.mount"
+    ];
+  };
 
 
   # Support for vscode remote server.
