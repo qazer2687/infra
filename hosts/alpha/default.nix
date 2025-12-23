@@ -25,26 +25,25 @@
 
   boot = {
     # Support for my external HDD.
-    supportedFilesystems = ["exfat" "nfs"];
+    supportedFilesystems = ["exfat" "cifs"];
   };
 
   networking.networkmanager.enable = true;
 
   systemd.services.systemd-networkd-wait-online.enable = true;
-
-  services.rpcbind.enable = true;
   
   fileSystems."/mnt/storage" = {
-    device = "192.168.1.10:/mnt/storage";
-    fsType = "nfs";
-    options = [ 
-      "noatime"
-      "soft"
-      "timeo=10"
-      "retrans=2"
-      "x-systemd.requires=network-online.target"
-      "x-systemd.after=network-online.target"
-      "_netdev"
+    device = "//192.168.1.10/storage";
+    fsType = "cifs";
+    options = [
+      "guest"
+      "uid=1000"
+      "gid=100"
+      "file_mode=0666"
+      "dir_mode=0777"
+      "nofail"
+      "x-systemd.automount"
+      "noauto"
     ];
   };
 
