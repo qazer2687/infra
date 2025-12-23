@@ -28,6 +28,10 @@
     supportedFilesystems = ["exfat" "nfs"];
   };
 
+  networking.networkmanager.enable = true;
+
+  systemd.services.systemd-networkd-wait-online.enable = true;
+
   services.rpcbind.enable = true;
   
   fileSystems."/mnt/storage" = {
@@ -43,17 +47,6 @@
       "_netdev"
     ];
   };
-
-  fileSystems."/home/alex/data" = {
-    device = "/mnt/storage/data";
-    fsType = "none";
-    options = [ 
-      "bind" 
-      "x-systemd.requires=mnt-storage.mount"
-      "x-systemd.after=mnt-storage.mount"
-    ];
-  };
-
 
   # Support for vscode remote server.
   programs.nix-ld.enable = true;
