@@ -38,6 +38,9 @@
       "soft"
       "timeo=10"
       "retrans=2"
+      "x-systemd.requires=network-online.target"
+      "x-systemd.after=network-online.target"
+      "_netdev"
     ];
   };
 
