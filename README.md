@@ -7,4 +7,4 @@
 
 | Name         | OS    | Description                               |  Type   |     Arch      |
 | :----------- | :---: | :---------------------------------------- | :-----: | :-----------: |
-| `alpha`       | NixOS | My desktop PC.                            | Virtual | x86_64-linux  |
+| `p-vm-core-01`       | NixOS | My desktop PC.                            | Virtual | x86_64-linux  |

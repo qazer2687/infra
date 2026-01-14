@@ -1,8 +1,8 @@
 {pkgs, config, ...}: {
   imports = [
-    ../../hardware/alpha
+    ../../hardware/p-vm-core-01
   ];
-  networking.hostName = "alpha";
+  networking.hostName = "p-vm-core-01";
 
   services.qemuGuest.enable = true;
 

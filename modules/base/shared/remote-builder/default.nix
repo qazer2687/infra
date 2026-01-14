@@ -7,7 +7,7 @@
 }: let
   fleet = {
     "sage" = { hostName = "sage"; maxJobs = 16;  speedFactor = 4; };
-    "alpha" = { hostName = "alpha"; maxJobs = 2; speedFactor = 1; };
+    "p-vm-core-01" = { hostName = "p-vm-core-01"; maxJobs = 2; speedFactor = 1; };
     "jet" = { hostName = "jet"; maxJobs = 8; speedFactor = 2; };
   };
   

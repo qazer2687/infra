@@ -35,7 +35,7 @@
     overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = {
-      alpha = (import ./flake/alpha) {inherit inputs self;};
+      p-vm-core-01 = (import ./flake/p-vm-core-01) {inherit inputs self;};
 
     };
   };

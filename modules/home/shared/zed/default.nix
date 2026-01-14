@@ -11,7 +11,7 @@
     programs.zed-editor = {
       enable = true;
       package = pkgs.zed-editor-fhs;
-      installRemoteServer = (osConfig.networking.hostName == "alpha");
+      installRemoteServer = (osConfig.networking.hostName == "p-vm-core-01");
     };
 
     home.shellAliases = {
