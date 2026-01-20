@@ -36,12 +36,11 @@
     supportedFilesystems = [ "ntfs" "exfat" "cifs" ];
   };
 
-  hardware.graphics = { # If on NixOS < 24.11, use hardware.opengl
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      intel-media-driver # Modern VA-API driver (Broadwell+)
-      intel-media-sdk    # The specific QSV driver for 8th Gen
-      intel-compute-runtime # Required for OpenCL (HDR tonemapping in Plex/Jellyfin)
+      intel-media-driver   # Modern VA-API driver for 8th Gen
+      intel-compute-runtime # Enables HDR to SDR tone-mapping
     ];
   };
 
