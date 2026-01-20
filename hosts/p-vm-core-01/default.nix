@@ -21,12 +21,33 @@
     };
   };
 
-  programs.fish.enable = true;
+    boot = {
+    kernelParams = [
+      "i915.enable_guc=2"
+    ];
+    kernel.sysctl = {
+      # Queue discipline algorithm for traffic control (CAKE reduces bufferbloat and latency).
+      "net.core.default_qdisc" = "cake";
 
-  boot = {
-    # Support for my external HDD.
-    supportedFilesystems = ["exfat" "cifs"];
+      # TCP congestion control algorithm (BBR provides better throughput and lower latency).
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
+    #kernelPackages = pkgs.linuxPackages_cachyos;
+    supportedFilesystems = [ "ntfs" "exfat" "cifs" ];
   };
+
+  hardware.graphics = { # If on NixOS < 24.11, use hardware.opengl
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # Modern VA-API driver (Broadwell+)
+      intel-media-sdk    # The specific QSV driver for 8th Gen
+      intel-compute-runtime # Required for OpenCL (HDR tonemapping in Plex/Jellyfin)
+    ];
+  };
+
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
+  programs.fish.enable = true;
 
   networking.networkmanager.enable = true;
 
