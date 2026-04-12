@@ -31,7 +31,7 @@
     ];
     initrd.verbose = false;
     consoleLogLevel = 0;
-    kernelPackages = pkgs.linuxPackages_cachyos-server;
+    #kernelPackages = pkgs.linuxPackages_cachyos-server;
   };
 
 
