@@ -43,7 +43,7 @@
       intel-compute-runtime # Enables HDR to SDR tone-mapping
     ];
   };
-
+33
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
 
   programs.fish.enable = true;
