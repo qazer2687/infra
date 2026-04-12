@@ -50,16 +50,16 @@
     owner    = "root";
     group    = "root";
   };
-  /*services.k3s = {
+  services.k3s = {
     enable = true;
     role = "agent";
     tokenFile = config.sops.secrets.k3s.path;
-    serverAddr = "https://<server-tailscale-ip>:6443";
+    serverAddr = "https://100.77.88.58:6443";
     extraFlags = [
       "--flannel-iface=tailscale0"
-      "--node-ip=<agent-tailscale-ip>"
+      "--node-ip=100.113.2.92"
     ];
-  };*/
+  };
 
   # Support for vscode remote server.
   programs.nix-ld.enable = true;

@@ -50,18 +50,18 @@
     owner    = "root";
     group    = "root";
   };
-  /*
+  
   services.k3s = {
     enable = true;
     role = "server";
     tokenFile = config.sops.secrets.k3s.path;
     extraFlags = [
       "--flannel-iface=tailscale0"
-      "--node-ip=${your-tailscale-ip}"
-      "--tls-san=${your-tailscale-ip}"
+      "--node-ip=100.77.88.58"
+      "--tls-san=100.77.88.58"
     ];
   };
-  */
+  
 
   # Support for vscode remote server.
   programs.nix-ld.enable = true;
