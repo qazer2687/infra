@@ -37,6 +37,11 @@
     nixosConfigurations = {
       p-vm-core-01 = (import ./flake/p-vm-core-01) {inherit inputs self;};
 
+      fern = (import ./flake/fern) {inherit inputs self;};
+      reed = (import ./flake/reed) {inherit inputs self;};
+      #kelp
+      #pine
+      #mica
     };
   };
 }
