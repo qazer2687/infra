@@ -59,6 +59,8 @@
       "--flannel-iface=tailscale0"
       "--node-ip=100.77.88.58"
       "--tls-san=100.77.88.58"
+      # Allow writing to the kubeconfig without root permissions.
+      "--write-kubeconfig-mode 644"
     ];
   };
   
