@@ -64,9 +64,15 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    fluxcd
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      fluxcd
+    ];
+    sessionVariables = {
+      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+      
+    };
+  };
   
 
   # Support for vscode remote server.
