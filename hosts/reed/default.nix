@@ -20,6 +20,21 @@
     };
   };
 
+  fileSystems."/mnt/storage" = {
+    device = "//clover/storage";
+    fsType = "cifs";
+    options = [
+      "guest"
+      "uid=1000"
+      "gid=100"
+      "file_mode=0666"
+      "dir_mode=0777"
+      "nofail"
+      "x-systemd.automount"
+      "noauto"
+    ];
+  };
+
   programs.fish.enable = true;
 
   boot = {

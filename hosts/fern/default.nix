@@ -34,6 +34,21 @@
     #kernelPackages = pkgs.linuxPackages_cachyos-server;
   };
 
+  fileSystems."/mnt/storage" = {
+    device = "//clover/storage";
+    fsType = "cifs";
+    options = [
+      "guest"
+      "uid=1000"
+      "gid=100"
+      "file_mode=0666"
+      "dir_mode=0777"
+      "nofail"
+      "x-systemd.automount"
+      "noauto"
+    ];
+  };
+
 
   networking.firewall.allowedTCPPorts = [
     6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
