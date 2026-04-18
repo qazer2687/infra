@@ -27,7 +27,7 @@
   };
 
   fileSystems."/mnt/storage" = {
-    device = "//clover/storage";
+    device = "//100.121.32.128/storage";
     fsType = "cifs";
     options = [
       "guest"
