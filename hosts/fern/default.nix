@@ -67,6 +67,7 @@
   environment = {
     systemPackages = with pkgs; [
       fluxcd
+      kubernetes-helm
     ];
     sessionVariables = {
       KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
