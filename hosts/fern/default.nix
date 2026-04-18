@@ -41,7 +41,7 @@
   };
 
   fileSystems."/mnt/storage" = {
-    device = "//100.121.32.128/storage";
+    device = "//192.168.1.10/storage";
     fsType = "cifs";
     options = [
       "guest"
