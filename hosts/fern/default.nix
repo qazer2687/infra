@@ -34,6 +34,12 @@
     #kernelPackages = pkgs.linuxPackages_cachyos-server;
   };
 
+    # fix a qbittorrent thing
+  boot.kernel.sysctl = {
+    "net.ipv6.conf.all.disable_ipv6" = 0;
+    "net.ipv4.conf.all.src_valid_mark" = 1;
+  };
+
   fileSystems."/mnt/storage" = {
     device = "//clover/storage";
     fsType = "cifs";
