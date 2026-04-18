@@ -85,6 +85,10 @@
       enable = true;
       name = "iqn.2026-04.org.qazer:${config.networking.hostName}";
     };
+    # Allow Longhorn to find the binary.
+    systemd.tmpfiles.rules = [
+      "L+ /usr/bin/iscsiadm - - - - ${pkgs.openiscsi}/bin/iscsiadm"
+    ];
 
     ########## KEYMAP ##########
 
