@@ -63,6 +63,10 @@
       "--write-kubeconfig-mode 644"
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    fluxcd
+  ];
   
 
   # Support for vscode remote server.
