@@ -70,33 +70,21 @@
 
     # Tailscale
     #services.tailscale.enable = true;
+    /*
     networking = {
       # Allow all the IP's in the tailscale subnet to bypass firewall.
       firewall.extraInputRules = ''
         -A INPUT -i tailscale0 -j ACCEPT
       '';
     };
-
-    /*
-    systemd = {
-      services.NetworkManager-wait-online.enable = false;
-      # Disable the service because it hangs on boot.
-      services.NetworkManager-dispatcher.enable = false;
-    };
     */
 
-    # Block AI-related domains.
-   /* networking.extraHosts = ''
-      127.0.0.1 chat.openai.com
-      127.0.0.1 openai.com
-      127.0.0.1 claude.ai
-      127.0.0.1 poe.com
-      127.0.0.1 bard.google.com
-      127.0.0.1 gemini.google.com
-      127.0.0.1 chatgpt.com
-      127.0.0.1 perplexity.ai
-      127.0.0.1 copilot.microsoft.com
-    '';*/
+    # Required by Longhorn
+    boot.initrd.kernelModules = [ "iscsi_tcp" ];
+    services.openiscsi = {
+      enable = true;
+      name = "iqn.2026-04.org.qazer:${config.networking.hostName}";
+    };
 
     ########## KEYMAP ##########
 
