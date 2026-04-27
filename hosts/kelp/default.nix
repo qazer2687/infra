@@ -1,9 +1,9 @@
 {pkgs, config, ...}: {
   imports = [
-    ../../hardware/reed
+    ../../hardware/kelp
   ];
 
-  networking.hostName = "reed";
+  networking.hostName = "kelp";
 
   users = {
     mutableUsers = false;
@@ -20,7 +20,21 @@
     };
   };
 
-  # fix a qbittorrent thing
+  programs.fish.enable = true;
+
+  boot = {
+    kernelParams = [
+      "quiet"
+
+      # https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy
+      "rcutree.enable_rcu_lazy=1"
+    ];
+    initrd.verbose = false;
+    consoleLogLevel = 0;
+    #kernelPackages = pkgs.linuxPackages_cachyos-server;
+  };
+
+    # fix a qbittorrent thing
   boot.kernel.sysctl = {
     "net.ipv6.conf.all.disable_ipv6" = 0;
     "net.ipv4.conf.all.src_valid_mark" = 1;
@@ -41,21 +55,6 @@
     ];
   };
 
-  programs.fish.enable = true;
-
-  boot = {
-    kernelParams = [
-      "quiet"
-
-      # https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy
-      "rcutree.enable_rcu_lazy=1"
-    ];
-    initrd.verbose = false;
-    consoleLogLevel = 0;
-    #kernelPackages = pkgs.linuxPackages_cachyos-server;
-  };
-
-
   networking.firewall.allowedTCPPorts = [
     6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
     2379 # k3s, etcd clients: required if using a "High Availability Embedded etcd" configuration
@@ -71,24 +70,40 @@
     owner    = "root";
     group    = "root";
   };
+  
+  /*
   services.k3s = {
     enable = true;
-    role = "agent";
+    role = "server";
     tokenFile = config.sops.secrets.k3s.path;
     serverAddr = "https://100.77.88.58:6443";
     extraFlags = [
       "--flannel-iface=tailscale0"
-      "--node-ip=100.113.2.92"
+      "--node-ip=<tailscale-ip>"
 
-
+      # Keep CPU and memory out of scheduler allocatable for OS and k8s daemons
       "--system-reserved=cpu=500m,memory=512Mi"
       "--kube-reserved=cpu=500m,memory=512Mi"
 
+      # Hard floor; omitting inodesFree disables it entirely
       "--eviction-hard=memory.available<500Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<15%"
+
+      # Graceful eviction before hitting the hard threshold
       "--eviction-soft=memory.available<1Gi"
       "--eviction-soft-grace-period=memory.available=30s"
     ];
+  };*/
+
+  environment = {
+    systemPackages = with pkgs; [
+      fluxcd
+      kubernetes-helm
+    ];
+    sessionVariables = {
+      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+    };
   };
+  
 
   # Support for vscode remote server.
   programs.nix-ld.enable = true;

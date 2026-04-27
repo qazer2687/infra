@@ -6,15 +6,15 @@
 inputs.nixpkgs.lib.nixosSystem {
   specialArgs = {inherit inputs self;};
   modules = [
-    ../../hosts/fern
+    ../../hosts/kelp
     ../../modules/base/shared
-    ../../modules/base/fern
+    ../../modules/base/kelp
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     inputs.nyx.nixosModules.default
     {
       home-manager = {
-        users.alex = ../../homes/fern;
+        users.alex = ../../homes/kelp;
         extraSpecialArgs = {inherit inputs self;};
         useGlobalPkgs = true;
         useUserPackages = true;

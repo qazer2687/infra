@@ -77,11 +77,23 @@
     role = "server";
     tokenFile = config.sops.secrets.k3s.path;
     extraFlags = [
+      # Bind node identity and overlay network to Tailscale
       "--flannel-iface=tailscale0"
       "--node-ip=100.77.88.58"
       "--tls-san=100.77.88.58"
-      # Allow writing to the kubeconfig without root permissions.
-      "--write-kubeconfig-mode 644"
+
+      "--write-kubeconfig-mode=644"
+
+      # Keep CPU and memory out of scheduler allocatable for OS and k8s daemons
+      "--system-reserved=cpu=500m,memory=512Mi"
+      "--kube-reserved=cpu=500m,memory=512Mi"
+
+      # Hard floor; omitting inodesFree disables it entirely
+      "--eviction-hard=memory.available<500Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<15%"
+
+      # Graceful eviction before hitting the hard threshold
+      "--eviction-soft=memory.available<1Gi"
+      "--eviction-soft-grace-period=memory.available=30s"
     ];
   };
 

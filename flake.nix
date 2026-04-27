@@ -39,9 +39,12 @@
 
       fern = (import ./flake/fern) {inherit inputs self;};
       reed = (import ./flake/reed) {inherit inputs self;};
-      #kelp
+      kelp = (import ./flake/kelp) {inherit inputs self;};
       #pine
-      #mica
+      #teak
+      #palm
+      #flax
+      #silt
     };
   };
 }
