@@ -84,19 +84,15 @@
       "--flannel-iface=tailscale0"
       "--node-ip=100.77.88.58"
       "--tls-san=100.77.88.58"
-
       "--write-kubeconfig-mode=644"
-
       # Keep CPU and memory out of scheduler allocatable for OS and k8s daemons
       "--kubelet-arg=system-reserved=cpu=500m,memory=512Mi"
       "--kubelet-arg=kube-reserved=cpu=500m,memory=512Mi"
-
       # Hard floor; omitting inodesFree disables it entirely
-      "--eviction-hard=memory.available<500Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<15%"
-
+      "--kubelet-arg=eviction-hard=memory.available<500Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<15%"
       # Graceful eviction before hitting the hard threshold
-      "--eviction-soft=memory.available<1Gi"
-      "--eviction-soft-grace-period=memory.available=30s"
+      "--kubelet-arg=eviction-soft=memory.available<1Gi"
+      "--kubelet-arg=eviction-soft-grace-period=memory.available=30s"
     ];
   };
 
