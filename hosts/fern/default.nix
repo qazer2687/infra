@@ -88,8 +88,8 @@
       "--write-kubeconfig-mode=644"
 
       # Keep CPU and memory out of scheduler allocatable for OS and k8s daemons
-      "--system-reserved=cpu=500m,memory=512Mi"
-      "--kube-reserved=cpu=500m,memory=512Mi"
+      "--kubelet-arg=system-reserved=cpu=500m,memory=512Mi"
+      "--kubelet-arg=kube-reserved=cpu=500m,memory=512Mi"
 
       # Hard floor; omitting inodesFree disables it entirely
       "--eviction-hard=memory.available<500Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<15%"

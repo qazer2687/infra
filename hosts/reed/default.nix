@@ -84,8 +84,8 @@
       "--node-ip=100.113.2.92"
 
 
-      "--system-reserved=cpu=500m,memory=512Mi"
-      "--kube-reserved=cpu=500m,memory=512Mi"
+      "--kubelet-arg=system-reserved=cpu=500m,memory=512Mi"
+      "--kubelet-arg=kube-reserved=cpu=500m,memory=512Mi"
 
       "--eviction-hard=memory.available<500Mi,nodefs.available<10%,nodefs.inodesFree<5%,imagefs.available<15%"
       "--eviction-soft=memory.available<1Gi"
