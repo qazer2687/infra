@@ -11,7 +11,6 @@
     
     nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     sops-nix.url = "github:Mic92/sops-nix";
-    flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     textfox.url = "github:adriankarlen/textfox";
 
     vicinae.url = "github:vicinaehq/vicinae";

@@ -12,7 +12,6 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.home-manager
     inputs.nyx.nixosModules.default
-    inputs.flatpak.nixosModules.nix-flatpak
     {
       home-manager = {
         users.alex = ../../homes/p-vm-core-01;
