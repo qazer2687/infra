@@ -75,6 +75,7 @@
     group    = "root";
   };
   
+  /*
   services.k3s = {
     enable = true;
     role = "server";
@@ -95,6 +96,7 @@
       "--kubelet-arg=eviction-soft-grace-period=memory.available=30s"
     ];
   };
+  */
 
   environment = {
     systemPackages = with pkgs; [
