@@ -118,6 +118,7 @@
     systemd-boot.enable = true;
     zram.enable = true;
     tailscale.enable = true;
+    nfs.enable = true;
 
     # Security
     firewall.enable = true;
