@@ -41,14 +41,11 @@
   };
 
   fileSystems."/mnt/storage" = {
-    device = "//192.168.1.10/storage";
-    fsType = "cifs";
+    device = "100.77.88.58:/mnt/storage";
+    fsType = "nfs";
     options = [
-      "guest"
-      "uid=1000"
-      "gid=100"
-      "file_mode=0666"
-      "dir_mode=0777"
+      "nfsvers=4"
+      "soft"
       "nofail"
       "x-systemd.automount"
       "noauto"
