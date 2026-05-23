@@ -41,15 +41,9 @@
   };
 
   fileSystems."/mnt/storage" = {
-    device = "100.77.88.58:/mnt/storage";
-    fsType = "nfs";
-    options = [
-      "nfsvers=4"
-      "soft"
-      "nofail"
-      "x-systemd.automount"
-      "noauto"
-    ];
+    device = "/dev/disk/by-uuid/33e56096-536d-410e-a2a8-cfd22ceb1db1";
+    fsType = "ext4";
+    options = [ "nofail" "noatime" ];
   };
 
   boot.supportedFilesystems = [ "nfs" ];
