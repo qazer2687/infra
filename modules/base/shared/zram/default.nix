@@ -9,8 +9,7 @@
     zramSwap = {
       enable = true;
       algorithm = "lz4";
-      # Provides 4GB "extra" RAM with 8GB physical.
-      memoryPercent = 50;
+      memoryPercent = 25;
     };
   };
 }
