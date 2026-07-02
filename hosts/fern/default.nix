@@ -29,6 +29,12 @@
       # https://wiki.cachyos.org/configuration/general_system_tweaks/#enable-rcu-lazy
       "rcutree.enable_rcu_lazy=1"
     ];
+    blacklistedKernelModules = [
+      "dvb_usb_rtl28xxu"
+      "rtl2832_sdr"
+      "rtl2832"
+      "r820t"
+    ];
     initrd.verbose = false;
     consoleLogLevel = 0;
     #kernelPackages = pkgs.linuxPackages_cachyos-server;
