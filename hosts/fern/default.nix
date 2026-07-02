@@ -52,6 +52,12 @@
     options = [ "nofail" "noatime" ];
   };
 
+  systemd.services.k3s = {
+    after = ["mnt-storage.mount"];
+    requires = ["mnt-storage.mount"];
+  };
+
+
   boot.supportedFilesystems = [ "nfs" ];
   services.rpcbind.enable = true;
 
