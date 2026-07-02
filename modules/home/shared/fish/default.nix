@@ -37,9 +37,7 @@
     home.shellAliases = {
       "check" = ''nix-shell -p alejandra -p deadnix -p statix --command "alejandra -q . && deadnix -e && statix fix"'';
       "rebuild" = "nh os switch github:qazer2687/dotfiles -H $(hostname) -- --refresh --option eval-cache false";
-      "reboot" = ''printf "Are you sure you want to reboot? [N/y]\n"; read -n 1 confirm; test "$confirm" = y && sudo reboot'';
-      "down" = ''kubectl scale deploy,statefulset -n apps --all --replicas=0 && kubectl scale deploy,statefulset -n media --all --replicas=0 && kubectl scale deploy,statefulset -n infra --all --replicas=0 && k3s-killall.sh'';
-      "up" = ''kubectl scale deploy,statefulset -n apps --all --replicas=1 && kubectl scale deploy,statefulset -n media --all --replicas=1 && kubectl scale deploy,statefulset -n infra --all --replicas=1'';
+      "reboot" = ''kubectl drain fern --ignore-daemonsets --delete-emptydir-data --force --disable-eviction --timeout=120s && sudo reboot'';
     };
   };
 }
